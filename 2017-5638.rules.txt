@@ -1,0 +1,1 @@
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"WEB_SERVER Apache Struts Remote Code Execution (2017-5638)"; flow:established,to_server; content:"opensymphony"; fast_pattern:only; content:"Content-Type|3a 20|"; http_header; pcre:"/Content-Type: [ ]*[%$]{[^\r\n]*#\w+/Hi"; reference:cve,2017-5638; classtype:web-application-attack; sid:9000101; rev:2;)
